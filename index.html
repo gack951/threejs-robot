@@ -43,15 +43,15 @@
   <div id="controls">
     <div class="slider-container">
       <div class="slider-label">Base - Y</div>
-      <input id="base_y" type="range" min="0" max="360" value="0" />
+      <input id="base_y" type="range" min="0" max="360" value="0" disabled />
     </div>
     <div class="slider-container">
       <div class="slider-label">Joint 1 - X</div>
-      <input id="joint1_x" type="range" min="-90" max="90" value="0" />
+      <input id="joint1_x" type="range" min="-90" max="90" value="0" disabled />
     </div>
     <div class="slider-container">
       <div class="slider-label">Joint 2 - X</div>
-      <input id="joint2_x" type="range" min="0" max="180" value="0" />
+      <input id="joint2_x" type="range" min="0" max="180" value="0" disabled />
     </div>
     <div class="slider-container">
       <div class="slider-label">Gripper:</div>
@@ -212,6 +212,9 @@
                 base.rotation.y = THREE.MathUtils.lerp(...base_lerp, animate_completion);
                 joint2.rotation.x = THREE.MathUtils.lerp(...joint2_lerp, animate_completion);
                 joint1.rotation.x = THREE.MathUtils.lerp(...joint1_lerp, animate_completion);
+                base_y.value = THREE.MathUtils.radToDeg(base.rotation.y);
+                joint1_x.value = THREE.MathUtils.radToDeg(joint1.rotation.x);
+                joint2_x.value = THREE.MathUtils.radToDeg(joint2.rotation.x);
               }
               animate_completion += 0.005;
               controls.update();
